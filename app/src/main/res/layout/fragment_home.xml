@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:layout_width="match_parent"
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="32dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
     
     <TextView
@@ -11,42 +12,65 @@
         android:layout_height="wrap_content"
         android:text="Вход в личный кабинет" />
 
-
-        <androidx.cardview.widget.CardView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="24dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Поиск работы" />
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
+                android:layout_height="40dp"
+                android:background="@drawable/edittext"
+                android:layout_marginVertical="16dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp">
+                android:layout_height="40dp"
+                android:orientation="horizontal">
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Продолжить"/>
+                    android:layout_weight="1"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="Продолжить"
+                    android:textAllCaps="false"
+                    android:background="@drawable/buttonshape"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textAlignment="center"
                     android:text="Войти с паролем"/>
             </LinearLayout>
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp">
             <LinearLayout
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="24dp">
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
@@ -54,11 +78,19 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
                 android:text="Размещение вакансий и доступ к базе резюме"/>
             <Button
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"/>
+                android:layout_height="32dp"
+                android:layout_width="match_parent"
+                android:text="Я ищу сотрудников"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:textAllCaps="false"
+                android:background="@drawable/employerbutton"/>
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
 
 </LinearLayout>
