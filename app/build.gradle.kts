@@ -52,5 +52,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.cardview.v7)
+    implementation(libs.toolbar.v7)
     implementation(libs.otpview)
 }
