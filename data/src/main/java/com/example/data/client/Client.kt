@@ -14,9 +14,12 @@ import io.ktor.client.plugins.observer.ResponseObserver
 import io.ktor.client.request.header
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
+import io.ktor.http.HttpMethod
 import io.ktor.serialization.kotlinx.KotlinxSerializationConverter
 import io.ktor.serialization.kotlinx.json.json
+import io.ktor.util.cio.writeChannel
 import kotlinx.serialization.json.Json
+import java.io.File
 
 private const val NETWORK_TIME_OUT = 6_0000000L
 
@@ -32,7 +35,7 @@ val httpClientAndroid = HttpClient(Android) {
         ))
     }
     install(DefaultRequest) {
-        url("https://drive.google.com/uc?export=download&id=1pPHmvMqAX7MSun2xkJV4znBzLx1MfofffoZftTFLnzI")
+
         header(HttpHeaders.ContentType, ContentType.Application.Json)
     }
     install(HttpTimeout) {
@@ -51,4 +54,17 @@ val httpClientAndroid = HttpClient(Android) {
             Log.d("HTTP status:", "${response.status.value}")
         }
     }
+}
+
+
+suspend fun HttpClient.downloadFile(file: File, url: String, callback: suspend (boolean: Boolean) -> Unit) {
+    val call = call {
+        url(url)
+        method = HttpMethod.Get
+    }
+    if (!call.response.status.isSuccess()) {
+        callback(false)
+    }
+    call.response.content.copyAndClose(file.writeChannel())
+    return callback(true)
 }
