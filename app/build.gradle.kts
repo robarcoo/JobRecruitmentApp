@@ -54,4 +54,10 @@ dependencies {
     implementation(libs.cardview.v7)
     implementation(libs.toolbar.v7)
     implementation(libs.otpview)
+
+    //Koin
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+
 }
