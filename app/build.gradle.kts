@@ -48,12 +48,14 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(project(":data"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.cardview.v7)
     implementation(libs.toolbar.v7)
     implementation(libs.otpview)
+    implementation(libs.ktor.client.android)
 
     //Koin
     implementation(libs.koin.core)
