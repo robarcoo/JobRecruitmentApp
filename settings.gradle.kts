@@ -22,4 +22,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "hhrutest"
 include(":app")
- 
+include(":data")
+include(":domain")
