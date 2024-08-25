@@ -2,6 +2,7 @@ package com.example.hhrutest
 
 import android.app.Application
 import androidx.work.WorkManager
+import com.example.hhrutest.di.appModule
 import com.example.hhrutest.di.dataModule
 import com.example.hhrutest.di.domainModule
 import org.koin.android.ext.koin.androidContext
@@ -17,7 +18,7 @@ class App : Application() {
         startKoin {
             androidLogger()
             androidContext(this@App)
-            modules(listOf(dataModule, domainModule))
+            modules(listOf(appModule, dataModule, domainModule))
         }
     }
 

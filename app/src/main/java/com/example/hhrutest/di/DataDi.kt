@@ -3,6 +3,7 @@ import com.example.data.client.httpClientAndroid
 import com.example.data.repository.ResponseRepositoryImpl
 import com.example.data.services.ResponseService
 import com.example.data.services.ResponseServiceImpl
+import com.example.domain.repository.ResponseRepository
 import io.ktor.client.HttpClient
 import org.koin.dsl.module
 import org.koin.android.ext.koin.androidContext
@@ -16,7 +17,7 @@ val dataModule = module {
         ResponseServiceImpl(client = get())
     }
 
-    single<ResponseRepositoryImpl> {
+    single<ResponseRepository> {
         ResponseRepositoryImpl(remoteDataSource = get(), context = androidContext())
     }
 }

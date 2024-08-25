@@ -1,5 +1,6 @@
 package com.example.hhrutest.ui.dashboard
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -30,7 +31,6 @@ class DashboardViewModel(private val getAllResponseUseCase : GetAllResponseUseCa
         getData()
     }
 
-
     fun getData() {
         viewModelScope.launch {
             getAllResponseUseCase
@@ -41,9 +41,12 @@ class DashboardViewModel(private val getAllResponseUseCase : GetAllResponseUseCa
                         when (it) {
                             is DownloadResult.Success<*> -> {
                                 val finalData = it.value as Response
+                                Log.d("CHECK", finalData.vacancies.toString())
                                 _response.update { response ->
                                     response.copy(finalData.offers, finalData.vacancies)
                                 }
+                                _isServerError.update { false }
+                                _isLoading.update { false }
                             }
                             is DownloadResult.Error -> {
                                 _isServerError.update { true }

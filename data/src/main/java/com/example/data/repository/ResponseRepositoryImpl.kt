@@ -29,12 +29,14 @@ class ResponseRepositoryImpl(private val remoteDataSource : ResponseService,
                     val jsonString = outputFile.readText()
                     val result = Gson().fromJson(jsonString, Response::class.java)
                     emit(DownloadResult.Success(result))
+                } else if (response.status.value in listOf(300, 301, 302, 303)) {
+                    emit(DownloadResult.Progress(Unit))
                 } else {
-                    emit(DownloadResult.Error(response.toString()))
+                    emit(DownloadResult.Error(response.status.toString()))
                 }
 
             } catch (e: Exception) {
-                DownloadResult.Error("Error")
+                DownloadResult.Error(response.status.toString())
             } finally {
                 outputFile.delete()
             }
