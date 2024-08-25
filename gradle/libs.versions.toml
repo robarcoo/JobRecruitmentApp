@@ -1,6 +1,7 @@
 [versions]
 agp = "8.5.1"
 cardviewV7 = "28.0.0"
+koinAndroidxScope = "2.0.1"
 koinCore = "3.5.0"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
@@ -9,6 +10,7 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 ktorClientAndroid = "2.3.11"
+ktorClientJvm = "1.2.5"
 material = "1.12.0"
 constraintlayout = "2.1.4"
 lifecycleLivedataKtx = "2.8.4"
@@ -16,6 +18,9 @@ lifecycleViewmodelKtx = "2.8.4"
 navigationFragmentKtx = "2.7.7"
 navigationUiKtx = "2.7.7"
 otpview = "3.1.0"
+slf4jAndroid = "1.6.1-RC1"
+slf4jApi = "1.7.36"
+workRuntimeKtx = "2.9.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -25,10 +30,14 @@ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "j
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinCore" }
+koin-android-ext = { module = "org.koin:koin-android-ext", version.ref = "koinAndroidxScope" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinCore" }
+koin-androidx-scope = { module = "org.koin:koin-androidx-scope", version.ref = "koinAndroidxScope" }
+koin-androidx-viewmodel = { module = "org.koin:koin-androidx-viewmodel", version.ref = "koinAndroidxScope" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinCore" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktorClientAndroid" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktorClientAndroid" }
+ktor-client-jvm = { module = "io.ktor:ktor-client-jvm", version.ref = "ktorClientJvm" }
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktorClientAndroid" }
 ktor-client-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktorClientAndroid" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktorClientAndroid" }
@@ -39,7 +48,8 @@ androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifec
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 otpview = { module = "com.github.mukeshsolanki.android-otpview-pinview:otpview", version.ref = "otpview" }
-toolbar-v7 = { module = "com.android.support:toolbar-v7" }
+slf4j-android = { module = "org.slf4j:slf4j-android", version.ref = "slf4jAndroid" }
+androidx-work-runtime-ktx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "workRuntimeKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -2,7 +2,7 @@ package com.example.domain.model
 
 sealed class DownloadResult {
 
-    object Success : DownloadResult()
+    data class Success<T>(val value: T) : DownloadResult()
 
     data class Error(val message: String, val cause: Exception? = null) : DownloadResult()
 

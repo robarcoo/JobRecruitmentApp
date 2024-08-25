@@ -25,6 +25,7 @@ private const val NETWORK_TIME_OUT = 6_0000000L
 
 val httpClientAndroid = HttpClient(Android) {
     install(ContentNegotiation) {
+        followRedirects = true
         register(ContentType.Text.Html, KotlinxSerializationConverter(
             Json {
                 json()
@@ -56,15 +57,3 @@ val httpClientAndroid = HttpClient(Android) {
     }
 }
 
-
-suspend fun HttpClient.downloadFile(file: File, url: String, callback: suspend (boolean: Boolean) -> Unit) {
-    val call = call {
-        url(url)
-        method = HttpMethod.Get
-    }
-    if (!call.response.status.isSuccess()) {
-        callback(false)
-    }
-    call.response.content.copyAndClose(file.writeChannel())
-    return callback(true)
-}
