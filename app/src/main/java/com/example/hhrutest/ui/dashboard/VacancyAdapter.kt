@@ -3,20 +3,17 @@ package com.example.hhrutest.ui.dashboard
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.domain.model.Response
 import com.example.hhrutest.R
 
-class DashboardAdapter(private val data : Response) : RecyclerView.Adapter<DashboardAdapter.VacancyViewHolder>() {
+class VacancyAdapter(private val data : Response) : RecyclerView.Adapter<VacancyAdapter.VacancyViewHolder>() {
 
     inner class VacancyViewHolder(itemView: View) : ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VacancyViewHolder {
-
         return VacancyViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.card_item,
