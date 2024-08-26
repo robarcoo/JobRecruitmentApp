@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.model.DownloadResult
 import com.example.domain.model.Response
+import com.example.domain.model.Vacancy
 import com.example.domain.usecase.GetAllResponseUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -31,7 +32,7 @@ class DashboardViewModel(private val getAllResponseUseCase : GetAllResponseUseCa
         getData()
     }
 
-    fun getData() {
+    private fun getData() {
         viewModelScope.launch {
             getAllResponseUseCase
                 .execute()
@@ -57,5 +58,10 @@ class DashboardViewModel(private val getAllResponseUseCase : GetAllResponseUseCa
                         }
                 }
         }
+    }
+
+    fun getVacancy(id: String?) : List<Vacancy> {
+        return id.let { response.value.vacancies.filter { it.id == id } }
+
     }
 }

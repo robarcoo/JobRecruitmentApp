@@ -17,14 +17,17 @@ constraintlayout = "2.1.4"
 lifecycleLivedataKtx = "2.8.4"
 lifecycleViewmodelKtx = "2.8.4"
 navigationFragmentKtx = "2.7.7"
+navigationFragmentKtxVersion = "1.0.0"
 navigationUiKtx = "2.7.7"
 otpview = "3.1.0"
 slf4jAndroid = "1.6.1-RC1"
 slf4jApi = "1.7.36"
 workRuntimeKtx = "2.9.1"
+navigationFragment = "2.7.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationFragmentKtx" }
 cardview-v7 = { module = "com.android.support:cardview-v7", version.ref = "cardviewV7" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -57,4 +60,5 @@ androidx-work-runtime-ktx = { group = "androidx.work", name = "work-runtime-ktx"
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+navigation-safeargs = { id = "androidx.navigation.safeargs", version.ref ="navigationFragment" }
 

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/full_vacancy_page"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -44,18 +46,22 @@
     </androidx.appcompat.widget.Toolbar>
 
     <TextView
+        android:id="@+id/full_vacancy_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="UI/UX Designer" />
     <TextView
+        android:id="@+id/full_vacancy_salary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Уровень дохода не указан" />
     <TextView
+        android:id="@+id/full_vacancy_experience"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Требуемый опыт: от 1 года до 3 лет" />
     <TextView
+        android:id="@+id/full_vacancy_workday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Полная занятость, полный день" />
@@ -66,6 +72,7 @@
         android:divider="@drawable/divider"
         android:showDividers="middle">
         <androidx.cardview.widget.CardView
+            android:id="@+id/full_vacancy_already_applied_card"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -75,6 +82,7 @@
                 android:layout_height="match_parent"
                 android:padding="8dp">
                 <TextView
+                    android:id="@+id/full_vacancy_already_applied"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="147 человек уже откликнулись" />
@@ -87,6 +95,7 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/full_vacancy_looking_right_now_card"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -96,6 +105,7 @@
                 android:layout_height="match_parent"
                 android:padding="8dp">
                 <TextView
+                    android:id="@+id/full_vacancy_looking_right_now"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="147 человек уже откликнулись" />
@@ -116,6 +126,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
         <TextView
+            android:id="@+id/full_vacancy_company_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:drawableEndCompat="@drawable/ic_home_black_24dp"
@@ -129,12 +140,14 @@
             android:adjustViewBounds="true" />
 
             <TextView
+                android:id="@+id/full_vacancy_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Минск, улица Бирюзова, 4/5" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
     <TextView
+        android:id="@+id/full_vacancy_company_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MOBYRIX - динамично развивающаяся продуктовая IT-компания, специализирующаяся на разработке мобильных приложений для iOS и Android."/>
@@ -143,6 +156,7 @@
         android:layout_height="wrap_content"
         android:text="Ваши задачи"/>
     <TextView
+        android:id="@+id/full_vacancy_responsibilities"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="-Проектировать пользовательский опыт, проводить UX исследования; -Разрабатывать адаптивный дизайн интерфейса для мобильных приложений."/>
@@ -160,52 +174,16 @@
         android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
-        <!-- тут нужен constraint-layout, потом добавлю -->
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:text="Где распологается место работы?"
-            android:textAllCaps="false"
-            android:background="@drawable/employerbutton"
-            />
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:text="Где распологается место работы?"
-            android:textAllCaps="false"
-            android:background="@drawable/employerbutton"
-            />
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:text="Где распологается место работы?"
-            android:textAllCaps="false"
-            android:background="@drawable/employerbutton"
-            />
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:text="Где распологается место работы?"
-            android:textAllCaps="false"
-            android:background="@drawable/employerbutton"
-            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <androidx.constraintlayout.helper.widget.Flow
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="button1,button2,button3,button4"
+            app:constraint_referenced_ids="recycler_view_buttons"
             app:layout_constraintEnd_toEndOf="parent"
             app:flow_wrapMode="chain"
             app:flow_horizontalBias="0"
@@ -215,7 +193,6 @@
             app:layout_constraintTop_toTopOf="parent"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

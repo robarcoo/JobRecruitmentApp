@@ -22,4 +22,15 @@
         android:name="com.example.hhrutest.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/vacancyFragment"
+        android:name="com.example.hhrutest.ui.vacancy.VacancyFragment"
+        android:label="VacancyFragment"
+        tools:layout="@layout/fragment_vacancy">
+        <argument
+            android:name="id"
+            app:argType="string"
+            android:defaultValue="@null"
+            app:nullable="true"/>
+    </fragment>
 </navigation>

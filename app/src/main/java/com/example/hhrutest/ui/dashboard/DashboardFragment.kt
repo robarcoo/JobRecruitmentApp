@@ -4,12 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.domain.model.Vacancy
+import com.example.hhrutest.R
 import com.example.hhrutest.databinding.FragmentDashboardBinding
+import com.example.hhrutest.ui.vacancy.VacancyFragment
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardFragment : Fragment() {
@@ -23,7 +30,7 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel by viewModel<DashboardViewModel>()
+        val dashboardViewModel : DashboardViewModel by activityViewModel()
         lateinit var vacancyAdapter: VacancyAdapter
         lateinit var offerAdapter: OfferAdapter
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
@@ -36,7 +43,10 @@ class DashboardFragment : Fragment() {
                 } else {
                     with(binding.recyclerViewVertical) {
                         layoutManager = LinearLayoutManager(context)
-                        vacancyAdapter = VacancyAdapter(dashboardViewModel.response.value)
+
+                        vacancyAdapter = VacancyAdapter(dashboardViewModel.response.value) { vacancy ->
+                            onItemClicked(vacancy)
+                        }
                         adapter = vacancyAdapter
                     }
                     with(binding.recyclerViewHorizontal) {
@@ -54,6 +64,15 @@ class DashboardFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun onItemClicked(id : String) {
+        val bundle = Bundle()
+        bundle.putString("vacancy_id", id)
+        val navHostFragment = (activity as AppCompatActivity)
+            .supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        val navController = navHostFragment.navController
+        navController.navigate(R.id.vacancyFragment, bundle)
     }
 }
 

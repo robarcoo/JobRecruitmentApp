@@ -7,9 +7,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.domain.model.Response
+import com.example.domain.model.Vacancy
 import com.example.hhrutest.R
+import com.example.hhrutest.ui.vacancy.VacancyFragment
 
-class VacancyAdapter(private val data : Response) : RecyclerView.Adapter<VacancyAdapter.VacancyViewHolder>() {
+class VacancyAdapter(private val data : Response,
+                     private val onItemClicked: (String) -> Unit) : RecyclerView.Adapter<VacancyAdapter.VacancyViewHolder>() {
 
     inner class VacancyViewHolder(itemView: View) : ViewHolder(itemView)
 
@@ -44,6 +47,9 @@ class VacancyAdapter(private val data : Response) : RecyclerView.Adapter<Vacancy
             publishedDataTextView.text = post.publishedDate
 
     }
+        holder.itemView.setOnClickListener {
+            onItemClicked(post.id)
+        }
     }
 }
 
