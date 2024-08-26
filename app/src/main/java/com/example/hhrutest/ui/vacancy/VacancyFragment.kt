@@ -47,8 +47,9 @@ class VacancyFragment(val id : String = "") : Fragment() {
         if (vacancyList.isNotEmpty()) {
             val vacancy = vacancyList.first()
             binding.fullVacancyTitle.text = vacancy.title
-            binding.fullVacancySalary.text = vacancy.salary.toString()
+            binding.fullVacancySalary.text = vacancy.salary.full
             binding.fullVacancyAddress.text = vacancy.address.toString()
+            binding.fullVacancyCompanyName.text = vacancy.company
             binding.fullVacancyCompanyDescription.text = vacancy.description
             binding.fullVacancyWorkday.text = vacancy.schedules.toString()
             if (vacancy.appliedNumber == null) {
@@ -66,7 +67,7 @@ class VacancyFragment(val id : String = "") : Fragment() {
             binding.fullVacancyExperience.text = vacancy.experience.text
             binding.fullVacancyResponsibilities.text = vacancy.responsibilities
             with(binding.recyclerViewButtons) {
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 buttonAdapter = ButtonAdapter(vacancy.questions)
                 adapter = buttonAdapter
             }
