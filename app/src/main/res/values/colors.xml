@@ -14,6 +14,7 @@
     
     
     <color name="black">#FF000000</color>
+    <color name="grey_0c">#FF0C0C0C</color>
     <color name="grey_25">#FF222325</color>
     <color name="grey_34">#FF313234</color>
     <color name="grey_88">#FF858688</color>

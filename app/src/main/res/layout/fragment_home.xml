@@ -5,12 +5,16 @@
     android:orientation="vertical"
     android:paddingHorizontal="16dp"
     android:paddingVertical="32dp"
+    android:background="@color/grey_0c"
     xmlns:android="http://schemas.android.com/apk/res/android">
     
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Вход в личный кабинет" />
+        android:text="Вход в личный кабинет"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sfpro_semibold"
+        android:textSize="20sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="8dp"
+            app:cardBackgroundColor="@color/grey_25">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -31,24 +36,59 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:fontFamily="@font/sfpro_medium"
+                android:textSize="16sp"
                 android:text="Поиск работы" />
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/login_edit_text"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/edittext"
-                android:layout_marginVertical="16dp"/>
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/grey_34"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:fontFamily="@font/sfpro_regular"
+                android:layout_marginVertical="16dp"
+                app:endIconMode="clear_text"
+                app:hintEnabled="false"
+                app:boxStrokeColor="@android:color/transparent"
+                app:errorIconDrawable="@null"
+                app:boxStrokeErrorColor="@color/red"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:paddingVertical="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:inputType="textEmailAddress"
+                    android:drawableStart="@drawable/ic_mail"
+                    android:drawablePadding="8dp"
+                    android:hint="Элекронная почта или телефон"
+                    android:textColorHint="@color/grey_9f"
+                    android:gravity="center_vertical"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:orientation="horizontal">
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/login_button"
+                    android:enabled="false"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
+                    android:gravity="center"
                     android:text="Продолжить"
+                    android:fontFamily="@font/sfpro_regular"
+                    android:textSize="14sp"
+                    android:textColor="@color/grey_9f"
                     android:textAllCaps="false"
                     android:background="@drawable/buttonshape"
                     />
@@ -58,6 +98,9 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:textAlignment="center"
+                    android:textColor="@color/blue"
+                    android:fontFamily="@font/sfpro_regular"
+                    android:textSize="14sp"
                     android:text="Войти с паролем"/>
             </LinearLayout>
             </LinearLayout>
@@ -65,7 +108,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="8dp"
+            app:cardBackgroundColor="@color/grey_25"
+            android:background="@drawable/card">
             <LinearLayout
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
@@ -75,20 +120,31 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Поиск сотрудников"/>
+                android:text="Поиск сотрудников"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="@font/sfpro_medium"
+                />
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
+                android:fontFamily="@font/sfpro_regular"
+                android:textSize="14sp"
+                android:textColor="@color/white"
                 android:text="Размещение вакансий и доступ к базе резюме"/>
-            <Button
+                <androidx.appcompat.widget.AppCompatButton
                 android:layout_height="32dp"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:text="Я ищу сотрудников"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:fontFamily="@font/sfpro_regular"
+                android:textSize="14sp"
                 android:background="@drawable/employerbutton"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
