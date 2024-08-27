@@ -2,12 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="8dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@color/grey_25"
         android:id="@+id/cv"
         >
         <FrameLayout
@@ -27,6 +29,9 @@
                 android:id="@+id/now_looking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/green"
+                android:fontFamily="@font/sfpro_regular"
+                android:textSize="14sp"
                 android:text="Сейчас просматривает 1 человек" />
 
             <TextView
@@ -34,12 +39,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
+                android:fontFamily="@font/sfpro_medium"
+                android:textSize="16sp"
+                android:textColor="@color/white"
                 android:text="UI/UX Designer" />
 
             <TextView
                 android:id="@+id/vacancy_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:fontFamily="@font/sfpro_regular"
+                android:textSize="14sp"
                 android:text="Минск" />
 
             <TextView
@@ -47,8 +58,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Мобирикс"
+                android:textColor="@color/white"
+                android:fontFamily="@font/sfpro_regular"
+                android:textSize="14sp"
                 android:layout_marginTop="4dp"
-                app:drawableEndCompat="@drawable/ic_notifications_black_24dp"
+                app:drawableEndCompat="@drawable/ic_verified"
                 android:drawablePadding="8dp" />
             <TextView
                 android:id="@+id/vacancy_experience"
@@ -57,31 +71,42 @@
                 android:text="Опыт от 1 года до 3 лет"
                 android:layout_marginVertical="10dp"
                 android:drawablePadding="8dp"
-                app:drawableStartCompat="@drawable/ic_notifications_black_24dp" />
+                android:textColor="@color/white"
+                android:fontFamily="@font/sfpro_regular"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"
+                app:drawableStartCompat="@drawable/ic_experience" />
             <TextView
                 android:id="@+id/published_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/grey_88"
+                android:fontFamily="@font/sfpro_regular"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"
                 android:text="Опубликовано 20 февраля"
                 />
         </LinearLayout>
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="32dp"
             android:background="@drawable/employerbutton"
             android:text="Откликнуться"
+            android:textColor="@color/white"
+            android:fontFamily="@font/sfpro_regular"
+            android:textSize="14sp"
             android:layout_marginTop="21dp"
             android:padding="0dp"
             android:textAllCaps="false"/>
         </LinearLayout>
             <ImageButton
                 android:id="@+id/short_favorite_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="end|top"
                 android:clickable="true"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_notifications_black_24dp" />
+                 />
         </FrameLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

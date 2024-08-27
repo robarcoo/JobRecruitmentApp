@@ -1,6 +1,7 @@
 package com.example.hhrutest.ui.dashboard
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.graphics.drawable.Icon
 import android.net.Uri
 import android.view.LayoutInflater
@@ -37,21 +38,34 @@ class OfferAdapter(private val data : Response,
 
     override fun onBindViewHolder(holder: OfferViewHolder, position: Int) {
         val offer = data.offers[position]
-        val icon = when(offer.id) {
-            "near_vacancies" -> R.drawable.ic_location_on
-            "level_up_resume" -> R.drawable.ic_star
-            "temporary_job" -> R.drawable.ic_list
-            else -> android.R.color.transparent
-        }
         holder.itemView.apply {
             val offerIcon = findViewById<ImageView>(R.id.offer_icon)
             val offerTitle = findViewById<TextView>(R.id.offer_title)
             val offerButton = findViewById<TextView>(R.id.offer_button)
+
+            var icon = android.R.color.transparent
+            when (offer.id) {
+                "near_vacancies" -> {
+                    icon = R.drawable.ic_location_on
+                    offerIcon.setBackgroundResource(R.drawable.icon_shape)
+                }
+                "level_up_resume" -> {
+                    icon = R.drawable.ic_star
+                    offerIcon.setBackgroundResource(R.drawable.green_icon_shape)
+                }
+                "temporary_job" -> {
+                    icon = R.drawable.ic_list
+                    offerIcon.setBackgroundResource(R.drawable.green_icon_shape)
+                }
+            }
+
+
             if (icon == android.R.color.transparent) {
                 offerIcon.visibility = View.GONE
             } else {
                 offerIcon.setImageResource(icon)
             }
+
             offerTitle.text = offer.title
             offerButton.visibility = if (offer.button != null) View.VISIBLE else View.GONE
             offerButton.text = offerButton.text

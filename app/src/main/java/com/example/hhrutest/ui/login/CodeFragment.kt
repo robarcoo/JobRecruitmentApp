@@ -20,8 +20,6 @@ import com.example.hhrutest.ui.home.HomeViewModel
 class CodeFragment : Fragment() {
     private var _binding: FragmentCodeBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(

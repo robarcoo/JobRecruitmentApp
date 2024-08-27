@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragment_dashboard"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_dashboard"
+    android:background="@color/grey_0c"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -30,16 +31,45 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <EditText
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/search_bar"
                         android:layout_width="0dp"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/edittext"
-                        android:layout_marginEnd="8dp"/>
+                        app:boxBackgroundColor="@color/grey_34"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:fontFamily="@font/sfpro_regular"
+                        android:layout_marginVertical="16dp"
+                        app:endIconMode="clear_text"
+                        app:hintEnabled="false"
+                        app:boxStrokeColor="@android:color/transparent"
+                        app:errorIconDrawable="@null"
+                        app:boxStrokeErrorColor="@color/red"
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/search"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:paddingVertical="4dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:inputType="textEmailAddress"
+                            android:drawableStart="@drawable/ic_search"
+                            android:drawablePadding="8dp"
+                            android:hint="Должность, ключевые слова"
+                            android:textColorHint="@color/grey_9f"
+                            android:gravity="center_vertical"
+
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
                     <ImageButton
+                        android:layout_marginTop="15dp"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/ic_filter"
                         android:background="@drawable/edittext" />
                 </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
@@ -47,6 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="true"
+                tools:listitem="@layout/square_card"
                 />
 
                 <RelativeLayout
@@ -74,10 +105,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp"
+                android:paddingBottom="16dp"
+                android:paddingTop="32dp"
+                android:fontFamily="@font/sfpro_semibold"
                 android:text="Вакансии для вас"
-                android:textSize="16sp" />
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_vertical"

@@ -53,7 +53,9 @@ class VacancyAdapter(private val data : List<Vacancy>,
             val favoriteButton = findViewById<ImageButton>(R.id.short_favorite_button)
             favoriteButton.setOnClickListener {
                 onFavoriteButtonClicked(post.id)
+                favoriteButton.changeFavoriteButton(post.isFavorite)
             }
+            favoriteButton.changeFavoriteButton(post.isFavorite)
             nowLookingTextView.text = "Сейчас просматривает ${post.lookingNumber} человек"
             vacancyNameTextView.text = post.title
             vacancyLocationTextView.text = post.address.town
@@ -63,6 +65,14 @@ class VacancyAdapter(private val data : List<Vacancy>,
         }
         holder.itemView.setOnClickListener {
             onItemClicked(post.id)
+        }
+    }
+
+    private fun ImageButton.changeFavoriteButton(isFavorite : Boolean) {
+        if (isFavorite) {
+            this.setBackgroundResource(R.drawable.ic_favorite)
+        } else {
+            this.setBackgroundResource(R.drawable.ic_unfavorite)
         }
     }
 }
