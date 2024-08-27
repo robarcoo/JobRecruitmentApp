@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
+import com.example.hhrutest.R
 import com.example.hhrutest.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -28,10 +31,12 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
+        binding.loginButton.setOnClickListener {
+            val navHostFragment = (activity as AppCompatActivity)
+                .supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+            val navController = navHostFragment.navController
+            navController.navigate(R.id.codeFragment)
+        }
         return root
     }
 

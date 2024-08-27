@@ -1,18 +1,23 @@
 package com.example.hhrutest.ui.dashboard
 
+import android.content.Intent
 import android.graphics.drawable.Icon
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.compose.ui.res.painterResource
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.domain.model.Response
 import com.example.hhrutest.R
 
-class OfferAdapter(private val data : Response) : RecyclerView.Adapter<OfferAdapter.OfferViewHolder>() {
+class OfferAdapter(private val data : Response,
+                   private val onItemClicked: (String) -> Unit) : RecyclerView.Adapter<OfferAdapter.OfferViewHolder>() {
 
     inner class OfferViewHolder(itemView: View) : ViewHolder(itemView)
 
@@ -51,5 +56,9 @@ class OfferAdapter(private val data : Response) : RecyclerView.Adapter<OfferAdap
             offerButton.visibility = if (offer.button != null) View.VISIBLE else View.GONE
             offerButton.text = offerButton.text
             }
+
+        holder.itemView.setOnClickListener {
+            onItemClicked(offer.link)
         }
     }
+}

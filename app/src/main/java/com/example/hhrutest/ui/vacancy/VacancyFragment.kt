@@ -1,20 +1,31 @@
 package com.example.hhrutest.ui.vacancy
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.domain.model.Vacancy
+import com.example.hhrutest.R
 import com.example.hhrutest.databinding.FragmentDashboardBinding
 import com.example.hhrutest.databinding.FragmentVacancyBinding
 import com.example.hhrutest.ui.dashboard.DashboardViewModel
 import com.example.hhrutest.ui.dashboard.OfferAdapter
 import com.example.hhrutest.ui.dashboard.VacancyAdapter
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import io.ktor.http.CacheControl
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ViewModelOwner
@@ -70,6 +81,30 @@ class VacancyFragment(val id : String = "") : Fragment() {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 buttonAdapter = ButtonAdapter(vacancy.questions)
                 adapter = buttonAdapter
+            }
+
+            binding.goBackButton.setOnClickListener {
+                val navHostFragment = (activity as AppCompatActivity)
+                    .supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+                navHostFragment.navController.popBackStack()
+            }
+            val dialog = context?.let { BottomSheetDialog(it) }
+            dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog?.setCancelable(false)
+            dialog?.setContentView(R.layout.apply_dialog)
+            dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            binding.applyForVacancyButton.setOnClickListener {
+                dialog?.findViewById<TextView>(R.id.dialog_vacancy_title)?.text = vacancy.title
+                dialog?.show()
+            }
+
+            dialog?.findViewById<TextView>(R.id.add_cover_letter)?.setOnClickListener {
+                dialog.findViewById<EditText>(R.id.write_cover_letter)?.visibility = View.VISIBLE
+                it.visibility = View.GONE
+            }
+
+            dialog?.findViewById<Button>(R.id.send_application_button)?.setOnClickListener {
+                dialog.dismiss()
             }
         }
     }

@@ -5,11 +5,26 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
 
     <color name="edittext">#FF313234</color>
     <color name="button_disabled">#FF00427D</color>
     <color name="button_enabled">#FF2B7EFE</color>
     <color name="employer_button">#FF4CB24E</color>
+    
+    
+    <color name="black">#FF000000</color>
+    <color name="grey_25">#FF222325</color>
+    <color name="grey_34">#FF313234</color>
+    <color name="grey_88">#FF858688</color>
+    <color name="grey_9f">#FF9F9F9F</color>
+    <color name="grey_db">#FFDBDBDB</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="blue">#FF2B7EFE</color>
+    <color name="dark_blue">#FF00427D</color>
+    <color name="green">#FF4CB24E</color>
+    <color name="dark_green">#FF015905</color>
+    <color name="red">#FF0000</color>
+    
 </resources>

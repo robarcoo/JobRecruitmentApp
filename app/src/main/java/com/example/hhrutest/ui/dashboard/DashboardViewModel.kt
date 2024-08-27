@@ -1,6 +1,7 @@
 package com.example.hhrutest.ui.dashboard
 
 import android.util.Log
+import androidx.compose.ui.util.fastFilter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,6 +29,9 @@ class DashboardViewModel(private val getAllResponseUseCase : GetAllResponseUseCa
     private var _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
 
+    private var _favorite = MutableStateFlow<List<Vacancy>>(emptyList())
+    val favorite: StateFlow<List<Vacancy>> = _favorite.asStateFlow()
+
     init {
         getData()
     }
@@ -46,6 +50,9 @@ class DashboardViewModel(private val getAllResponseUseCase : GetAllResponseUseCa
                                 _response.update { response ->
                                     response.copy(finalData.offers, finalData.vacancies)
                                 }
+                                _favorite.update {
+                                    getAllFavorite()
+                                }
                                 _isServerError.update { false }
                                 _isLoading.update { false }
                             }
@@ -62,6 +69,23 @@ class DashboardViewModel(private val getAllResponseUseCase : GetAllResponseUseCa
 
     fun getVacancy(id: String?) : List<Vacancy> {
         return id.let { response.value.vacancies.filter { it.id == id } }
+    }
 
+    fun getAllFavorite() : List<Vacancy> {
+        if (response.value.vacancies.isEmpty()) {
+            getData()
+        }
+        return response.value.vacancies.filter { it.isFavorite }
+    }
+
+    fun favoriteButtonClick(id : String?) {
+        val temp = response.value.vacancies
+        temp.filter { it.id == id }.map { vacancy -> vacancy.isFavorite = !vacancy.isFavorite }
+        _response.update {
+            it.copy(vacancies = temp)
+        }
+        _favorite.update {
+            getAllFavorite()
+        }
     }
 }

@@ -1,10 +1,14 @@
 package com.example.hhrutest.ui.dashboard
 
+import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -25,6 +29,7 @@ class DashboardFragment : Fragment() {
 
     private val binding get() = _binding!!
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,19 +49,30 @@ class DashboardFragment : Fragment() {
                     with(binding.recyclerViewVertical) {
                         layoutManager = LinearLayoutManager(context)
 
-                        vacancyAdapter = VacancyAdapter(dashboardViewModel.response.value) { vacancy ->
+                        vacancyAdapter = VacancyAdapter(dashboardViewModel.response.value.vacancies, onFavoriteButtonClicked =
+                        { dashboardViewModel.favoriteButtonClick(it) } ) { vacancy ->
                             onItemClicked(vacancy)
                         }
                         adapter = vacancyAdapter
                     }
                     with(binding.recyclerViewHorizontal) {
                         layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                        offerAdapter = OfferAdapter(dashboardViewModel.response.value)
+                        offerAdapter = OfferAdapter(dashboardViewModel.response.value) { link ->
+                            onOfferClicked(link)
+                        }
                         adapter = offerAdapter
                     }
                     binding.loadingPanel.visibility = View.GONE
                 }
             }
+        }
+        binding.showMoreVacanciesButton.setOnClickListener {
+            vacancyAdapter.updateMaxItems(Int.MAX_VALUE)
+            vacancyAdapter.notifyDataSetChanged()
+            binding.recyclerViewHorizontal.visibility = View.GONE
+            binding.allVacanciesBar.visibility = View.VISIBLE
+            binding.vacanciesForYou.visibility = View.GONE
+            it.visibility = View.GONE
         }
         return root
     }
@@ -73,6 +89,11 @@ class DashboardFragment : Fragment() {
             .supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHostFragment.navController
         navController.navigate(R.id.vacancyFragment, bundle)
+    }
+
+    private fun onOfferClicked(url : String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        context?.let { ContextCompat.startActivity(it, browserIntent, null) }
     }
 }
 

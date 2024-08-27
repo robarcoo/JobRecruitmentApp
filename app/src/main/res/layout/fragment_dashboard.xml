@@ -49,8 +49,28 @@
                 android:nestedScrollingEnabled="true"
                 />
 
+                <RelativeLayout
+                    android:id="@+id/all_vacancies_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="145 вакансий"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="По соответствию"
+                        android:layout_alignParentEnd="true"
+                        android:drawablePadding="6dp"
+                        android:drawableEnd="@drawable/ic_home_black_24dp"
+                        />
+                </RelativeLayout>
+
             <TextView
-                android:id="@+id/header2"
+                android:id="@+id/vacancies_for_you"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
@@ -66,6 +86,7 @@
                 tools:listitem="@layout/card_item"
                 android:nestedScrollingEnabled="false" />
                 <Button
+                    android:id="@+id/show_more_vacancies_button"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:insetTop="0dp"

@@ -40,6 +40,7 @@
         app:OtpViewType="rectangle"
         app:OtpLineColor="@android:color/transparent"
         android:itemBackground="@drawable/otpshape"
+        android:focusableInTouchMode="true"
         />
     <Button
         android:layout_width="match_parent"
