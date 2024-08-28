@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -63,6 +64,7 @@ class VacancyFragment(val id : String = "") : Fragment() {
             binding.fullVacancyCompanyName.text = vacancy.company
             binding.fullVacancyCompanyDescription.text = vacancy.description
             binding.fullVacancyWorkday.text = vacancy.schedules.toString()
+            binding.fullVacancyFavoriteButton.changeFavoriteButton(vacancy.isFavorite)
             if (vacancy.appliedNumber == null) {
                 binding.fullVacancyAlreadyAppliedCard.visibility = View.GONE
             } else {
@@ -79,7 +81,9 @@ class VacancyFragment(val id : String = "") : Fragment() {
             binding.fullVacancyResponsibilities.text = vacancy.responsibilities
             with(binding.recyclerViewButtons) {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                buttonAdapter = ButtonAdapter(vacancy.questions)
+                buttonAdapter = ButtonAdapter(vacancy.questions) { _, question ->
+                   openDialog(vacancy.title, question)
+                }
                 adapter = buttonAdapter
             }
 
@@ -88,30 +92,55 @@ class VacancyFragment(val id : String = "") : Fragment() {
                     .supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
                 navHostFragment.navController.popBackStack()
             }
-            val dialog = context?.let { BottomSheetDialog(it) }
-            dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
-            dialog?.setCancelable(false)
-            dialog?.setContentView(R.layout.apply_dialog)
-            dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            binding.applyForVacancyButton.setOnClickListener {
-                dialog?.findViewById<TextView>(R.id.dialog_vacancy_title)?.text = vacancy.title
-                dialog?.show()
+            binding.fullVacancyFavoriteButton.setOnClickListener {
+                dashboardViewModel.favoriteButtonClick(vacancy.id)
+                binding.fullVacancyFavoriteButton.changeFavoriteButton(vacancy.isFavorite)
             }
+            openDialog(vacancy.title)
 
-            dialog?.findViewById<TextView>(R.id.add_cover_letter)?.setOnClickListener {
-                dialog.findViewById<EditText>(R.id.write_cover_letter)?.visibility = View.VISIBLE
-                it.visibility = View.GONE
-            }
+        }
+    }
 
-            dialog?.findViewById<Button>(R.id.send_application_button)?.setOnClickListener {
-                dialog.dismiss()
-            }
+    private fun ImageButton.changeFavoriteButton(isFavorite : Boolean) {
+        if (isFavorite) {
+            this.setBackgroundResource(R.drawable.ic_favorite)
+        } else {
+            this.setBackgroundResource(R.drawable.ic_unfavorite)
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun openDialog(title : String, question: String = "") {
+        val dialog = context?.let { BottomSheetDialog(it) }
+        dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog?.setCancelable(false)
+        dialog?.setContentView(R.layout.apply_dialog)
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog?.findViewById<TextView>(R.id.dialog_vacancy_title)?.text = title
+        if (question != "") {
+            dialog?.show()
+        }
+        binding.applyForVacancyButton.setOnClickListener {
+            dialog?.show()
+        }
+        if (question.isEmpty()) {
+            dialog?.findViewById<TextView>(R.id.add_cover_letter)?.setOnClickListener {
+                dialog.findViewById<EditText>(R.id.write_cover_letter)?.visibility = View.VISIBLE
+                it.visibility = View.GONE
+            }
+        } else {
+            dialog?.findViewById<TextView>(R.id.add_cover_letter)?.visibility = View.GONE
+            dialog?.findViewById<EditText>(R.id.write_cover_letter)?.visibility = View.VISIBLE
+            dialog?.findViewById<EditText>(R.id.write_cover_letter)?.setText(question)
+        }
+
+        dialog?.findViewById<Button>(R.id.send_application_button)?.setOnClickListener {
+            dialog.dismiss()
+        }
     }
 
 }

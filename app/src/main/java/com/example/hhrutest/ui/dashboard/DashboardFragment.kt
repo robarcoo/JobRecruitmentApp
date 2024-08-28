@@ -66,6 +66,8 @@ class DashboardFragment : Fragment() {
                 }
             }
         }
+        binding.showMoreVacanciesButton.text = "Еще ${dashboardViewModel.response.value.vacancies.size - 3} вакансий"
+        binding.overallVacancies.text = "${dashboardViewModel.response.value.vacancies.size} вакансий"
         binding.showMoreVacanciesButton.setOnClickListener {
             vacancyAdapter.updateMaxItems(Int.MAX_VALUE)
             vacancyAdapter.notifyDataSetChanged()

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
                 badge.number = it.size
                 if (badge.number > 0) {
                     badge.isVisible = true
+                    badge.backgroundColor = ContextCompat.getColor(this@MainActivity, R.color.red)
                 } else {
                     badge.isVisible = false
                 }

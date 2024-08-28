@@ -86,17 +86,24 @@
                     android:layout_height="wrap_content"
                     android:visibility="gone">
                     <TextView
+                        android:id="@+id/overall_vacancies"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/sfpro_regular"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
                         android:text="145 вакансий"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="По соответствию"
+                        android:fontFamily="@font/sfpro_regular"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
                         android:layout_alignParentEnd="true"
                         android:drawablePadding="6dp"
-                        android:drawableEnd="@drawable/ic_home_black_24dp"
+                        android:drawableEnd="@drawable/ic_filter_by"
                         />
                 </RelativeLayout>
 
@@ -118,13 +125,14 @@
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/card_item"
                 android:nestedScrollingEnabled="false" />
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/show_more_vacancies_button"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
-                    android:background="@drawable/buttonshape"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_shape_enabled"
                     android:textAllCaps="false"
                     android:text="Еще 143 вакансии"
                     />

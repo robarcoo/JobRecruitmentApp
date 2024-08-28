@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.appcompat.widget.AppCompatButton android:id="@+id/question_button"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <Button
-        android:id="@+id/question_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:text="Где распологается место работы?"
-        android:textAllCaps="false"
-        android:background="@drawable/employerbutton"
-        />
-</LinearLayout>
+    android:layout_height="wrap_content"
+    android:text="Где распологается место работы?"
+    android:textAllCaps="false"
+    android:fontFamily="@font/sfpro_medium"
+    android:textColor="@color/white"
+    android:textSize="14sp"
+    android:paddingVertical="12dp"
+    android:paddingHorizontal="12dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/question_button"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

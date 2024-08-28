@@ -63,6 +63,7 @@ class FavoriteFragment : Fragment() {
                         }
 
                         binding.loadingPanel.visibility = View.GONE
+                        binding.vacancyAmount.text = "${dashboardViewModel.getAllFavorite().size} вакансия"
                     }
                 }
         }

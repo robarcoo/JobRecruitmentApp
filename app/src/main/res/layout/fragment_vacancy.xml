@@ -11,6 +11,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="@color/grey_0c"
     >
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -22,29 +23,29 @@
             android:layout_height="wrap_content">
             <ImageButton
                 android:id="@+id/go_back_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_notifications_black_24dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_go_back"
                 android:background="@android:color/transparent"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true">
                 <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_notifications_black_24dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_eye"
                     android:background="@android:color/transparent"/>
                 <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_notifications_black_24dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_share"
                     android:background="@android:color/transparent"
                     android:layout_marginHorizontal="16dp"/>
                 <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_notifications_black_24dp"
+                    android:id="@+id/full_vacancy_favorite_button"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:background="@android:color/transparent"/>
             </LinearLayout>
         </RelativeLayout>
@@ -55,21 +56,35 @@
         android:id="@+id/full_vacancy_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sfpro_semibold"
+        android:textColor="@color/white"
+        android:textSize="22dp"
         android:text="UI/UX Designer" />
     <TextView
         android:id="@+id/full_vacancy_salary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sfpro_regular"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        android:layout_marginVertical="16dp"
         android:text="Уровень дохода не указан" />
     <TextView
         android:id="@+id/full_vacancy_experience"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sfpro_regular"
+        android:textColor="@color/white"
+        android:textSize="14dp"
         android:text="Требуемый опыт: от 1 года до 3 лет" />
     <TextView
         android:id="@+id/full_vacancy_workday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sfpro_regular"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        android:layout_marginBottom="24dp"
         android:text="Полная занятость, полный день" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -82,6 +97,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            app:cardBackgroundColor="@color/dark_green"
             app:cardCornerRadius="8dp">
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -91,11 +107,14 @@
                     android:id="@+id/full_vacancy_already_applied"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/sfpro_regular"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
                     android:text="147 человек уже откликнулись" />
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:src="@drawable/ic_notifications_black_24dp"
+                    android:src="@drawable/ic_already_applied"
                     android:layout_alignParentEnd="true"
                     />
             </RelativeLayout>
@@ -103,6 +122,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/full_vacancy_looking_right_now_card"
             android:layout_width="0dp"
+            app:cardBackgroundColor="@color/dark_green"
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:cardCornerRadius="8dp">
@@ -114,11 +134,14 @@
                     android:id="@+id/full_vacancy_looking_right_now"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/sfpro_regular"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
                     android:text="147 человек уже откликнулись" />
                 <ImageView
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:src="@drawable/ic_notifications_black_24dp"
+                    android:src="@drawable/ic_looking_right_now"
                     android:layout_alignParentEnd="true"
                     />
             </RelativeLayout>
@@ -126,16 +149,25 @@
     </LinearLayout>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/grey_25"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="8dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingVertical="12dp"
+            android:paddingHorizontal="16dp"
             android:orientation="vertical">
         <TextView
             android:id="@+id/full_vacancy_company_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:drawableEndCompat="@drawable/ic_home_black_24dp"
+            android:fontFamily="@font/sfpro_medium"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:drawableEndCompat="@drawable/ic_verified"
             android:text="Mobirix"
             android:drawablePadding="8dp" />
 
@@ -143,12 +175,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/map"
+            android:layout_marginVertical="8dp"
             android:adjustViewBounds="true" />
 
             <TextView
                 android:id="@+id/full_vacancy_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/sfpro_regular"
+                android:textColor="@color/white"
+                android:textSize="14sp"
                 android:text="Минск, улица Бирюзова, 4/5" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -156,23 +192,43 @@
         android:id="@+id/full_vacancy_company_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sfpro_regular"
+        android:textColor="@color/white"
+        android:textSize="14sp"
         android:text="MOBYRIX - динамично развивающаяся продуктовая IT-компания, специализирующаяся на разработке мобильных приложений для iOS и Android."/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sfpro_semibold"
+        android:textColor="@color/white"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="20sp"
         android:text="Ваши задачи"/>
     <TextView
         android:id="@+id/full_vacancy_responsibilities"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sfpro_regular"
+        android:textColor="@color/white"
+        android:textSize="14sp"
         android:text="-Проектировать пользовательский опыт, проводить UX исследования; -Разрабатывать адаптивный дизайн интерфейса для мобильных приложений."/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/sfpro_medium"
+        android:textColor="@color/white"
+        android:textSize="14sp"
         android:text="Задайте вопрос работодателю"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sfpro_medium"
+        android:textColor="@color/grey_88"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:textSize="14sp"
         android:text="Он получит его с откликом на вакансию"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -185,7 +241,8 @@
             android:id="@+id/recycler_view_buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false"/>
+            android:nestedScrollingEnabled="false"
+            tools:listitem="@layout/question_button"/>
 
         <androidx.constraintlayout.helper.widget.Flow
             android:layout_width="0dp"
@@ -200,10 +257,16 @@
             app:layout_constraintTop_toTopOf="parent"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/apply_for_vacancy_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/sfpro_semibold"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:background="@drawable/full_vacancy_apply_button"
         android:text="Откликнуться" />
 </LinearLayout>
 </androidx.core.widget.NestedScrollView>
