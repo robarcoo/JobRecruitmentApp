@@ -21,8 +21,6 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -77,7 +75,7 @@ class HomeFragment : Fragment() {
                 } else {
                     binding.loginEditText.isErrorEnabled = true
                     binding.loginEditText.setBoxStrokeColorStateList(AppCompatResources.getColorStateList(context!!, R.color.red))
-                    binding.loginEditText.error = "Невалидный логин"
+                    binding.loginEditText.error = getString(R.string.invalid_login_error_text)
                     binding.loginButton.isEnabled = false
                     button.setBackgroundResource(R.drawable.buttonshape)
                     button.setTextColor(ContextCompat.getColor(context!!, R.color.grey_9f))

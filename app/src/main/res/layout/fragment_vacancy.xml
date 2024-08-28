@@ -10,6 +10,7 @@
     android:id="@+id/full_vacancy_page"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingTop="48dp"
     android:padding="16dp"
     android:background="@color/grey_0c"
     >

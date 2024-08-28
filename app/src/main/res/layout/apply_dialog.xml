@@ -35,7 +35,7 @@
                 android:fontFamily="@font/sfpro_regular"
                 android:textColor="@color/grey_88"
                 android:textSize="14sp"
-                android:text="Резюме для отклика" />
+                android:text="@string/resume_for_applying_text" />
             <TextView
                 android:id="@+id/dialog_vacancy_title"
                 android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
                 android:fontFamily="@font/sfpro_medium"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                android:text="UI/UX дизайнер" />
+                android:text="@string/resume_applying_vacancy_title" />
         </LinearLayout>
 
     </LinearLayout>
@@ -62,7 +62,7 @@
         android:fontFamily="@font/sfpro_semibold"
         android:textColor="@color/green"
         android:textSize="16sp"
-        android:text="Добавить сопроводительное"
+        android:text="@string/add_cover_letter_text"
         android:textAlignment="center"/>
     <EditText
         android:id="@+id/write_cover_letter"
@@ -74,7 +74,7 @@
         android:textColorHint="@color/grey_88"
         android:fontFamily="@font/sfpro_regular"
         android:textSize="14sp"
-        android:hint="Ваше сопроводительное письмо"
+        android:hint="@string/your_cover_letter_hint"
         android:visibility="gone"/>
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/send_application_button"
@@ -88,7 +88,7 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         android:background="@drawable/full_vacancy_apply_button"
-        android:text="Откликнуться" />
+        android:text="@string/apply_button_text" />
 
 
 </LinearLayout>

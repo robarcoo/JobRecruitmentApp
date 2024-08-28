@@ -35,7 +35,8 @@ class CodeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.sentCodeTitle.text = "Отправили код на ${arguments?.getString("login")}"
+        binding.sentCodeTitle.text =
+            getString(R.string.sent_code_to_text, arguments?.getString("login"))
         binding.otp.addTextChangedListener(textWatcher)
         binding.codeButton.setOnClickListener {
             val navHostFragment = (activity as AppCompatActivity)

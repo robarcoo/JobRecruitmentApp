@@ -19,6 +19,7 @@ import com.example.domain.model.Vacancy
 import com.example.hhrutest.R
 import com.example.hhrutest.databinding.FragmentDashboardBinding
 import com.example.hhrutest.ui.vacancy.VacancyFragment
+import com.example.hhrutest.util.vacancyUtil
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -35,11 +36,17 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+        return root
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val dashboardViewModel : DashboardViewModel by activityViewModel()
         lateinit var vacancyAdapter: VacancyAdapter
         lateinit var offerAdapter: OfferAdapter
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
         lifecycleScope.launch {
             dashboardViewModel.isLoading.collect { isLoading ->
@@ -66,8 +73,12 @@ class DashboardFragment : Fragment() {
                 }
             }
         }
-        binding.showMoreVacanciesButton.text = "Еще ${dashboardViewModel.response.value.vacancies.size - 3} вакансий"
-        binding.overallVacancies.text = "${dashboardViewModel.response.value.vacancies.size} вакансий"
+        val moreVacancies = dashboardViewModel.response.value.vacancies.size - 3
+        val allVacancies = dashboardViewModel.response.value.vacancies.size
+        binding.showMoreVacanciesButton.text =
+            getString(R.string.more_vacancies_text, moreVacancies.toString(), vacancyUtil(moreVacancies))
+        binding.overallVacancies.text =
+            getString(R.string.overall_vacancies_text, allVacancies.toString(), vacancyUtil(allVacancies))
         binding.showMoreVacanciesButton.setOnClickListener {
             vacancyAdapter.updateMaxItems(Int.MAX_VALUE)
             vacancyAdapter.notifyDataSetChanged()
@@ -76,7 +87,6 @@ class DashboardFragment : Fragment() {
             binding.vacanciesForYou.visibility = View.GONE
             it.visibility = View.GONE
         }
-        return root
     }
 
     override fun onDestroyView() {

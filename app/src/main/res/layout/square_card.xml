@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lineHeight="15sp"
-                android:text="Вакансии рядом с вами"/>
+                android:text="@string/offer_title_placeholder_text"/>
             <TextView
                 android:id="@+id/offer_button"
                 android:fontFamily="@font/sfpro_regular"
@@ -42,7 +42,7 @@
                 android:textColor="@color/green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Поднять"/>
+                android:text="@string/offer_button_placeholder_text"/>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

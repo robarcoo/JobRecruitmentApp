@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:paddingTop="48dp"
+    android:paddingBottom="60dp"
     android:background="@color/grey_0c">
     <RelativeLayout
         android:id="@+id/loadingPanel"
@@ -31,7 +33,7 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_marginTop="16dp"
-            android:text="Избранное"/>
+            android:text="@string/favorite_title_text"/>
         <TextView
             android:id="@+id/vacancy_amount"
             android:layout_width="wrap_content"
@@ -41,7 +43,7 @@
             android:textSize="14sp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="16dp"
-            android:text="1 вакансия"/>
+            android:text="@string/all_favorite_placeholder_text"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favorite_vacancy_recyclerview"
             android:layout_width="match_parent"

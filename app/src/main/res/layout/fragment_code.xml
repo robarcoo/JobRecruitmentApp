@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Отправили код на example@mail.ru"
+            android:text="@string/sent_code_text_placeholder"
             android:fontFamily="@font/sfpro_semibold"
             android:textColor="@color/white"
             android:textSize="20sp"/>
@@ -32,7 +32,7 @@
             android:fontFamily="@font/sfpro_medium"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:text="Напишите его, чтобы подтвердить, что это вы, а не кто-то другой входит в личный кабинет"/>
+            android:text="@string/send_code_description_text"/>
 
     </LinearLayout>
 
@@ -56,7 +56,7 @@
         android:id="@+id/code_button"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:text="Подтвердить"
+        android:text="@string/confirm_send_code_button_text"
         android:enabled="false"
         android:fontFamily="@font/sfpro_semibold"
         android:textColor="@color/white"

@@ -4,14 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:paddingHorizontal="16dp"
-    android:paddingVertical="32dp"
+    android:paddingVertical="48dp"
     android:background="@color/grey_0c"
     xmlns:android="http://schemas.android.com/apk/res/android">
     
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Вход в личный кабинет"
+        android:text="@string/start_screen_title_text"
         android:textColor="@color/white"
         android:fontFamily="@font/sfpro_semibold"
         android:textSize="20sp"/>
@@ -65,7 +65,7 @@
                     android:inputType="textEmailAddress"
                     android:drawableStart="@drawable/ic_mail"
                     android:drawablePadding="8dp"
-                    android:hint="Элекронная почта или телефон"
+                    android:hint="@string/email_or_phone_textfield_hint"
                     android:textColorHint="@color/grey_9f"
                     android:gravity="center_vertical"
 
@@ -85,7 +85,7 @@
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
                     android:gravity="center"
-                    android:text="Продолжить"
+                    android:text="@string/continue_button_text"
                     android:fontFamily="@font/sfpro_regular"
                     android:textSize="14sp"
                     android:textColor="@color/grey_9f"
@@ -101,7 +101,7 @@
                     android:textColor="@color/blue"
                     android:fontFamily="@font/sfpro_regular"
                     android:textSize="14sp"
-                    android:text="Войти с паролем"/>
+                    android:text="@string/login_with_password_button_text"/>
             </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -120,7 +120,7 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Поиск сотрудников"
+                android:text="@string/looking_for_employees_title_texxt"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:fontFamily="@font/sfpro_medium"
@@ -133,12 +133,12 @@
                 android:fontFamily="@font/sfpro_regular"
                 android:textSize="14sp"
                 android:textColor="@color/white"
-                android:text="Размещение вакансий и доступ к базе резюме"/>
+                android:text="@string/looking_for_employees_description_text"/>
                 <androidx.appcompat.widget.AppCompatButton
                 android:layout_height="32dp"
                 android:gravity="center"
                 android:layout_width="match_parent"
-                android:text="Я ищу сотрудников"
+                android:text="@string/looking_for_employees_button_text"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:textAllCaps="false"

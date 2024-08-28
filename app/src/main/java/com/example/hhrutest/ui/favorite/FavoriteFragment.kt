@@ -15,11 +15,10 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hhrutest.R
 import com.example.hhrutest.databinding.FragmentFavoriteBinding
-import com.example.hhrutest.databinding.FragmentNotificationsBinding
 import com.example.hhrutest.ui.dashboard.DashboardViewModel
 import com.example.hhrutest.ui.dashboard.OfferAdapter
 import com.example.hhrutest.ui.dashboard.VacancyAdapter
-import com.example.hhrutest.ui.notifications.NotificationsViewModel
+import com.example.hhrutest.util.vacancyUtil
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -63,7 +62,14 @@ class FavoriteFragment : Fragment() {
                         }
 
                         binding.loadingPanel.visibility = View.GONE
-                        binding.vacancyAmount.text = "${dashboardViewModel.getAllFavorite().size} вакансия"
+                        val vacancySize = dashboardViewModel.getAllFavorite().size
+                        binding.vacancyAmount.text = getString(
+                            R.string.all_favorite_vacancies_text,
+                            vacancySize.toString(),
+                            vacancyUtil(vacancySize)
+                        )
+
+
                     }
                 }
         }

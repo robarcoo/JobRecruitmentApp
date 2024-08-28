@@ -20,7 +20,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="16dp"
+            android:paddingTop="48dp"
             android:paddingHorizontal="16dp"
             android:paddingBottom="60dp">
             <LinearLayout
@@ -57,7 +57,7 @@
                             android:inputType="textEmailAddress"
                             android:drawableStart="@drawable/ic_search"
                             android:drawablePadding="8dp"
-                            android:hint="Должность, ключевые слова"
+                            android:hint="@string/search_hint_text"
                             android:textColorHint="@color/grey_9f"
                             android:gravity="center_vertical"
 
@@ -92,19 +92,18 @@
                         android:fontFamily="@font/sfpro_regular"
                         android:textColor="@color/white"
                         android:textSize="14sp"
-                        android:text="145 вакансий"
+                        android:text="@string/show_all_vacancies_button_text_placehodler"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="По соответствию"
+                        android:text="@string/filter_type_text"
                         android:fontFamily="@font/sfpro_regular"
                         android:textColor="@color/blue"
                         android:textSize="14sp"
                         android:layout_alignParentEnd="true"
                         android:drawablePadding="6dp"
-                        android:drawableEnd="@drawable/ic_filter_by"
-                        />
+                        app:drawableEndCompat="@drawable/ic_filter_by" />
                 </RelativeLayout>
 
             <TextView
@@ -115,7 +114,7 @@
                 android:paddingBottom="16dp"
                 android:paddingTop="32dp"
                 android:fontFamily="@font/sfpro_semibold"
-                android:text="Вакансии для вас"
+                android:text="@string/vacancies_for_you_title_text"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
@@ -134,7 +133,7 @@
                     android:textColor="@color/white"
                     android:background="@drawable/button_shape_enabled"
                     android:textAllCaps="false"
-                    android:text="Еще 143 вакансии"
+                    android:text="@string/more_vacancies_button_text"
                     />
             </LinearLayout>
 

@@ -12,6 +12,11 @@ import com.example.domain.model.Response
 import com.example.domain.model.Vacancy
 import com.example.hhrutest.R
 import com.example.hhrutest.ui.vacancy.VacancyFragment
+import com.example.hhrutest.util.humanUtil
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 import kotlin.math.min
 
 class VacancyAdapter(private val data : List<Vacancy>,
@@ -55,13 +60,27 @@ class VacancyAdapter(private val data : List<Vacancy>,
                 onFavoriteButtonClicked(post.id)
                 favoriteButton.changeFavoriteButton(post.isFavorite)
             }
+            val peopleNumber = post.lookingNumber?.toInt()
             favoriteButton.changeFavoriteButton(post.isFavorite)
-            nowLookingTextView.text = "Сейчас просматривает ${post.lookingNumber} человек"
+            if (peopleNumber != null) {
+                 nowLookingTextView.text = context.getString(
+                     R.string.now_looking_text,
+                     peopleNumber.toString(),
+                     humanUtil(peopleNumber)
+                 )
+            } else {
+                nowLookingTextView.visibility = View.GONE
+            }
             vacancyNameTextView.text = post.title
             vacancyLocationTextView.text = post.address.town
             companyNameTextView.text = post.company
             vacancyExperienceTextView.text = post.experience.previewText
-            publishedDataTextView.text = post.publishedDate
+
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+            val date = dateFormat.parse(post.publishedDate)
+            val dateFormatter = SimpleDateFormat("d MMMM", Locale("ru"))
+            val formattedDate = dateFormatter.format(date!!)
+            publishedDataTextView.text = context.getString(R.string.publshed_on_text, formattedDate)
         }
         holder.itemView.setOnClickListener {
             onItemClicked(post.id)

@@ -39,16 +39,6 @@ class ButtonAdapter(private val data: List<String>,
         holder.itemView.apply {
             val button = findViewById<Button>(R.id.question_button)
             button.text = question
-            val extraSpace = 1000
-            this.post {
-                val touchableArea = Rect()
-                button.getHitRect(touchableArea)
-                touchableArea.top += extraSpace * 100
-                touchableArea.bottom += extraSpace * 100
-                touchableArea.left += extraSpace
-                //touchableArea.right += extraSpace
-                this.touchDelegate = TouchDelegate(touchableArea, button)
-            }
         }
 
         holder.itemView.setOnClickListener {

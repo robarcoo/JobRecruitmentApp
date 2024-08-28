@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.ui.text.capitalize
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
@@ -26,6 +27,9 @@ import com.example.hhrutest.databinding.FragmentVacancyBinding
 import com.example.hhrutest.ui.dashboard.DashboardViewModel
 import com.example.hhrutest.ui.dashboard.OfferAdapter
 import com.example.hhrutest.ui.dashboard.VacancyAdapter
+import com.example.hhrutest.util.humanAppliedUtil
+import com.example.hhrutest.util.humanLookingUtil
+import com.example.hhrutest.util.humanUtil
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import io.ktor.http.CacheControl
 import kotlinx.coroutines.launch
@@ -33,6 +37,7 @@ import org.koin.androidx.viewmodel.ViewModelOwner
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.Locale
 
 class VacancyFragment(val id : String = "") : Fragment() {
 
@@ -60,24 +65,43 @@ class VacancyFragment(val id : String = "") : Fragment() {
             val vacancy = vacancyList.first()
             binding.fullVacancyTitle.text = vacancy.title
             binding.fullVacancySalary.text = vacancy.salary.full
-            binding.fullVacancyAddress.text = vacancy.address.toString()
+            binding.fullVacancyAddress.text = getString(
+                R.string.town_street_house,
+                vacancy.address.town,
+                vacancy.address.street,
+                vacancy.address.house
+            )
             binding.fullVacancyCompanyName.text = vacancy.company
             binding.fullVacancyCompanyDescription.text = vacancy.description
-            binding.fullVacancyWorkday.text = vacancy.schedules.toString()
+            binding.fullVacancyWorkday.text = vacancy.schedules.joinToString(", ")
+                .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }
             binding.fullVacancyFavoriteButton.changeFavoriteButton(vacancy.isFavorite)
-            if (vacancy.appliedNumber == null) {
+            val peopleApplied = vacancy.appliedNumber?.toInt()
+            if (peopleApplied == null) {
                 binding.fullVacancyAlreadyAppliedCard.visibility = View.GONE
             } else {
                 binding.fullVacancyAlreadyApplied.text =
-                    "${vacancy.appliedNumber} человек уже откликнулись"
+                    getString(
+                        R.string.already_applied_card_text,
+                        peopleApplied.toString(),
+                        humanUtil(peopleApplied),
+                        humanAppliedUtil(peopleApplied)
+                    )
             }
-            if (vacancy.lookingNumber == null) {
+            val peopleLooking = vacancy.lookingNumber?.toInt()
+            if (peopleLooking == null) {
                 binding.fullVacancyAlreadyAppliedCard.visibility = View.GONE
             } else {
                 binding.fullVacancyLookingRightNow.text =
-                    "${vacancy.lookingNumber} человек сейчас смотрят"
+                    getString(
+                        R.string.now_looking_card_text,
+                        peopleLooking.toString(),
+                        humanUtil(peopleLooking),
+                        humanLookingUtil(peopleLooking)
+                    )
             }
-            binding.fullVacancyExperience.text = vacancy.experience.text
+            binding.fullVacancyExperience.text =
+                getString(R.string.required_experience_text, vacancy.experience.text)
             binding.fullVacancyResponsibilities.text = vacancy.responsibilities
             with(binding.recyclerViewButtons) {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
